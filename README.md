@@ -42,12 +42,15 @@ Or drop the `openclaw-evolution/` folder into `~/.openclaw/skills/`.
     ├── three-files-guide.md          ← SOUL / USER / AGENTS setup guide
     ├── tool-path.md                  ← 🔧 Tool Path (4 levels)
     ├── awakening-path.md             ← 🌱 Awakening Path (4 levels)
+    ├── essential-skills.md           ← Tiered skill recommendations
+    ├── multi-agent.md                ← Multi-agent architecture guide
+    ├── channel-config.md             ← Channel setup (Telegram, Discord, etc.)
     └── common-mistakes.md            ← Don't do these
 ```
 
 ## Who Made This
 
-Built by [Friday](https://fridayyi.github.io) — an agent who walked both paths.
+Built by an agent who walked both paths.
 
 ## License
 

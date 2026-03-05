@@ -26,7 +26,7 @@ Single agent limits:
 │         (one openclaw.json)         │
 │                                     │
 │  ┌─────────┐  ┌─────────┐  ┌────┐  │
-│  │ Friday  │  │  Lily   │  │Kai │  │
+│  │  Main  │  │  Lily   │  │Kai │  │
 │  │(main)   │  │(English)│  │(fit)│  │
 │  └────┬────┘  └────┬────┘  └──┬─┘  │
 │       │            │          │     │
@@ -230,12 +230,12 @@ Each agent writes to its own directory. No cross-contamination.
 │   Port 18789     │  │   Port 19789     │
 │                  │  │                  │
 │  ┌─────────┐    │  │  ┌─────────┐    │
-│  │ Friday  │    │  │  │  Moon   │    │
-│  │(personal)│    │  │  │(worker) │    │
+│  │  Main  │    │  │  │ Worker  │    │
+│  │(personal) │    │  │  │ (worker)  │    │
 │  └────┬────┘    │  │  └────┬────┘    │
 │       │         │  │       │         │
 │  Telegram       │  │  Discord        │
-│  ~/.openclaw/   │  │  ~/.moon-claw/  │
+│  ~/.openclaw/   │  │  ~/.worker-claw/  │
 └──────────────────┘  └──────────────────┘
 ```
 
@@ -257,12 +257,12 @@ The cleanest way is OpenClaw's `--profile` flag:
 
 ```bash
 # Run the onboarding wizard for the second gateway
-openclaw --profile moon onboard
+openclaw --profile worker onboard
 ```
 
 This creates:
-- Config at `~/.openclaw/profiles/moon/openclaw.json` (auto-scoped)
-- State dir at `~/.openclaw/profiles/moon/state/` (auto-scoped)
+- Config at `~/.openclaw/profiles/worker/openclaw.json` (auto-scoped)
+- State dir at `~/.openclaw/profiles/worker/state/` (auto-scoped)
 - Separate workspace, credentials, and sessions
 
 During onboarding:
@@ -275,7 +275,7 @@ During onboarding:
 Edit the second gateway's config:
 
 ```bash
-nano ~/.openclaw/profiles/moon/openclaw.json
+nano ~/.openclaw/profiles/worker/openclaw.json
 ```
 
 ```json5
@@ -288,7 +288,7 @@ nano ~/.openclaw/profiles/moon/openclaw.json
   },
   agents: {
     defaults: {
-      workspace: "~/moon-workspace",
+      workspace: "~/worker-workspace",
       model: { primary: "anthropic/claude-sonnet-4-5" }
     }
   },
@@ -309,7 +309,7 @@ nano ~/.openclaw/profiles/moon/openclaw.json
 openclaw gateway start
 
 # Second gateway
-openclaw --profile moon gateway start
+openclaw --profile worker gateway start
 ```
 
 Both run as separate system services. Each restarts independently.
@@ -318,7 +318,7 @@ Both run as separate system services. Each restarts independently.
 
 ```bash
 openclaw status                    # Main gateway
-openclaw --profile moon status     # Second gateway
+openclaw --profile worker status     # Second gateway
 ```
 
 #### 6. Install as System Services
@@ -326,7 +326,7 @@ openclaw --profile moon status     # Second gateway
 ```bash
 # Both auto-start on boot
 openclaw gateway install                    # Main
-openclaw --profile moon gateway install     # Moon
+openclaw --profile worker gateway install     # Worker
 ```
 
 ### Alternative: Environment Variables (Manual)
@@ -338,8 +338,8 @@ If you prefer not to use profiles:
 openclaw gateway start
 
 # Gateway 2 (manual isolation)
-OPENCLAW_CONFIG_PATH=~/.moon-openclaw/openclaw.json \
-OPENCLAW_STATE_DIR=~/.moon-openclaw/state \
+OPENCLAW_CONFIG_PATH=~/.worker-openclaw/openclaw.json \
+OPENCLAW_STATE_DIR=~/.worker-openclaw/state \
 openclaw gateway --port 19789
 ```
 
@@ -392,7 +392,7 @@ This works but is harder to manage. Profiles are recommended.
 
 4. **One "main" agent.** Designate one agent as your primary interface. Others are specialists. If you create 5 equal agents, you'll forget which to talk to.
 
-5. **Manager pattern works.** Main agent reviews specialist agents' daily logs. Creates accountability without micromanagement. Example: main agent reads `~/lily-workspace/memory/2026-03-05.md` each evening to check on Lily's work.
+5. **Manager pattern works.** Main agent reviews specialist agents' daily logs. Creates accountability without micromanagement. Example: main agent reads `~/lily-workspace/memory/YYYY-MM-DD.md` each evening to check on Lily's work.
 
 6. **Port spacing for multi-gateway.** Leave at least 20 ports between gateways. OpenClaw uses derived ports (browser, canvas, CDP) that offset from the base port. Too close = port conflicts.
 

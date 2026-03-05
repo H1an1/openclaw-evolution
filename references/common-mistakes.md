@@ -24,7 +24,7 @@ Things that trip up almost every new OpenClaw user.
 
 **What happens:** Every conversation starts from zero. The agent asks the same questions, forgets decisions, can't build on previous work. It feels like a fancy chatbot.
 
-**Do instead:** Set up daily notes (memory/YYYY-MM-DD.md) from Day 2. Even minimal notes ("Decided to use React for the project. Yi prefers dark mode.") compound over time.
+**Do instead:** Set up daily notes (memory/YYYY-MM-DD.md) from Day 2. Even minimal notes ("Decided to use React for the project. User prefers dark mode.") compound over time.
 
 ---
 
