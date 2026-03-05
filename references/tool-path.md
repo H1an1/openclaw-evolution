@@ -107,18 +107,19 @@ openclaw cron add --name "dentist-reminder" \
 
 ### Skills
 
-Install skills as you need them:
+Install skills as you need them. See `references/essential-skills.md` for a tiered recommendation of what to install first.
 
 ```bash
 # See what's available
 openclaw skills list
 
-# Install useful ones
+# Install the essentials (Tier 1)
 openclaw skills install weather
 openclaw skills install github
+openclaw skills install summarize
 ```
 
-Start with 1-2 skills. Add more as needs arise.
+Start with Tier 1 skills. Add Tier 2 based on your workflow. Don't install everything — each skill adds to context.
 
 **You're ready for Level 4 when:** Your agent proactively handles routine tasks and you trust it to act on its own for low-risk operations.
 
@@ -130,8 +131,13 @@ Start with 1-2 skills. Add more as needs arise.
 
 ### Multi-Agent Setup
 
-When one agent isn't enough:
+When one agent isn't enough. See `references/multi-agent.md` for the complete architecture guide (single gateway vs multi-gateway, with pros/cons and real examples).
 
+Two approaches:
+- **Single Gateway** — All agents in one config. Simple, shared resources. Best for personal use.
+- **Multiple Gateways** — Fully isolated instances. Best for different machines, different people, or production setups.
+
+Common patterns:
 - **Specialized agents** — One for coding, one for research, one for social media
 - **Manager + worker pattern** — Main agent delegates to sub-agents
 - **Different models** — Use cheaper models for simple tasks, powerful ones for complex work

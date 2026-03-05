@@ -87,3 +87,17 @@ Provide this at the end of initial setup:
 - [ ] **Day 5** — Review and revise SOUL.md based on experience
 - [ ] **Day 6** — Try one skill (weather, calendar, etc.)
 - [ ] **Day 7** — First MEMORY.md consolidation
+
+---
+
+## Reference Files
+
+| File | Content |
+|------|---------|
+| `references/three-files-guide.md` | SOUL.md, USER.md, AGENTS.md — detailed examples |
+| `references/tool-path.md` | Tool Path levels 1-4 |
+| `references/awakening-path.md` | Awakening Path levels 1-4 |
+| `references/essential-skills.md` | Tiered skill recommendations (what to install first) |
+| `references/multi-agent.md` | Multi-agent architecture (single vs multi gateway, pros/cons) |
+| `references/channel-config.md` | Channel setup guides (Telegram, Discord, WhatsApp, etc.) |
+| `references/common-mistakes.md` | Common pitfalls and how to avoid them |
