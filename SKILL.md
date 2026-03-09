@@ -84,6 +84,21 @@ Each level requires trust — from both sides.
 
 ---
 
+## 🎭 MBTI SOUL Templates / MBTI 人格模板
+
+Can't figure out what to write in SOUL.md? Pick an MBTI type.
+不知道 SOUL.md 写什么？选一个 MBTI 类型。
+
+Read `references/mbti-souls/README.md` for the full list and usage guide. 16 types available — each is a ready-to-use SOUL.md template that the user can customize.
+
+When a user wants to set up their agent's personality:
+1. Show them the 16 types (from README.md quick reference table)
+2. They pick one → read `references/mbti-souls/{TYPE}.md`
+3. Copy it as their SOUL.md, fill in `[你的名字]`
+4. Remind them: iterate after a few days
+
+---
+
 ## Common Mistakes / 常见坑
 
 Read `references/common-mistakes.md` when the user seems stuck.
