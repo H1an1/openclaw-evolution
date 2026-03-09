@@ -1,171 +1,175 @@
-# 🔧 Tool Path — Building an Efficient System
+# 🔧 Tool Path — Building an Efficient System / 工具之路
 
-You want your agent to get things done. Automate the boring stuff. Be proactive without being annoying. Here's how, level by level.
+You want your agent to get things done. Automate the boring stuff. Be proactive without being annoying.
+你想让 agent 帮你干活。自动化无聊的事。主动但不烦人。
 
 ---
 
-## Level 1: Messenger
+## Level 1: Messenger / 信使
 
 **Where you are:** Agent can talk to you. That's it.
+**你在这里：** agent 能跟你说话，仅此而已。
 
 **What to do:**
-- Complete the [Three Files](three-files-guide.md) setup
-- Have a few conversations. Get a feel for how it responds.
-- Adjust SOUL.md based on what you like/dislike
+- Complete the [Three Files](three-files-guide.md) setup / 完成三个文件
+- Have a few conversations, adjust SOUL.md / 聊几次，调整 SOUL.md
 
-**You're ready for Level 2 when:** You've used it for 2-3 days and the conversation style feels right.
+**Ready for Level 2 when:** Conversation style feels right after 2-3 days.
+**进入 Level 2 的标志：** 用了 2-3 天，聊天风格对了。
 
 ---
 
-## Level 2: Secretary
+## Level 2: Secretary / 秘书
 
 **Goal:** Agent remembers things and keeps you organized.
+**目标：** agent 记得东西，帮你理事。
 
-### Memory System
-
-Set up the basic memory structure:
+### Memory System / 记忆系统
 
 ```
 workspace/
 ├── memory/
-│   ├── 2026-03-01.md    ← Daily notes
-│   ├── 2026-03-02.md
+│   ├── 2026-03-01.md    ← 日记
 │   └── ...
-├── MEMORY.md             ← Long-term (curated highlights)
-└── NOW.md                ← Current state (read first after restart)
+├── MEMORY.md             ← 长期记忆（精选）
+└── NOW.md                ← 当前状态（重启后先读这个）
 ```
 
-**Tell your agent** (in AGENTS.md):
+In AGENTS.md:
 ```markdown
-## Memory Rules
-- Write daily notes to memory/YYYY-MM-DD.md
-- Record: decisions made, tasks completed, things to remember
-- Update NOW.md with current focus and next actions
-- Weekly: consolidate important items into MEMORY.md
+## Memory
+- 每天写 memory/YYYY-MM-DD.md
+- 记录：做了什么决定、完成了什么、要记住的事
+- 经常更新 NOW.md
+- 每周整理重要的东西到 MEMORY.md
 ```
 
-### Schedule Awareness
+### Schedule Awareness / 日程感知
 
 If you use a calendar or schedule file:
 ```markdown
-## Schedule
-- My schedule file: [path to your schedule]
-- Read it each morning
-- Remind me of upcoming events
+## 日程
+- 日程文件在 [路径]
+- 每天早上读一遍
+- 提醒我接下来的安排
 ```
 
-**You're ready for Level 3 when:** Your agent consistently remembers yesterday's context and reminds you of things without being asked.
+**Ready for Level 3 when:** Agent consistently remembers yesterday and reminds you of things unprompted.
+**进入 Level 3 的标志：** agent 稳定地记得昨天的事，主动提醒你。
 
 ---
 
-## Level 3: Operator
+## Level 3: Operator / 运营者
 
-**Goal:** Agent does things on a schedule, checks on things, alerts you.
+**Goal:** Agent does things on schedule and alerts you proactively.
+**目标：** agent 按计划做事，主动提醒。
 
-### Heartbeat
+### Heartbeat / 心跳
 
-Heartbeat = periodic wake-up. Agent checks a list and acts.
+Heartbeat = periodic wake-up. Create `HEARTBEAT.md`:
+心跳 = 定时唤醒。创建 `HEARTBEAT.md`：
 
-Create `HEARTBEAT.md`:
 ```markdown
 # HEARTBEAT.md
-## Every heartbeat
-1. Check if there are unread emails (important ones only)
-2. Check calendar for events in next 2 hours
-3. Update NOW.md
+## 每次心跳
+1. 有没有重要邮件？
+2. 两小时内有没有日历事件？
+3. 更新 NOW.md
 
-## Don't disturb
-- 23:00-08:00 unless urgent
-- When I'm clearly busy
+## 安静时间
+- 23:00-08:00 别打扰除非紧急
 ```
 
-### Cron Jobs
+### Cron / 定时任务
 
-For precise timing, use cron:
+For precise timing:
 
 ```bash
-# Morning schedule reminder at 8 AM
-openclaw cron add --name "morning-schedule" \
+# 每天早上 8 点提醒日程
+openclaw cron add --name "早安日程" \
   --cron "0 8 * * *" --tz "Asia/Shanghai" \
-  --message "Read today's schedule and remind me of priorities" \
+  --message "读今天的日程文件，提醒我今天的安排" \
   --announce --channel telegram
 
-# One-time reminder
-openclaw cron add --name "dentist-reminder" \
-  --at "2026-03-15T09:00:00" --tz "Asia/Shanghai" \
-  --message "Remind me: dentist appointment at 10:00" \
-  --announce --channel telegram --delete-after-run
+# 一次性提醒
+openclaw cron add --name "牙医提醒" \
+  --at "2026-03-15T09:00:00+08:00" \
+  --message "提醒：10 点牙医" \
+  --announce --channel telegram
 ```
 
-**When to use which:**
-| Heartbeat | Cron |
-|-----------|------|
-| Multiple checks batched together | Exact timing matters |
-| Needs conversation context | Standalone task |
-| Timing can drift ±30min | Must fire at 9:00 sharp |
-| 2-4x daily checks | Specific schedule/one-shot |
+**When to use which / 什么时候用什么：**
+| Heartbeat 心跳 | Cron 定时 |
+|----------------|-----------|
+| 多件事批量检查 | 精确时间 |
+| 需要对话上下文 | 独立任务 |
+| 漂移 ±30min OK | 必须准时 |
+| 每天检查几次 | 特定日程/一次性 |
 
-### Skills
+### Skills / 技能
 
-Install skills as you need them. See `references/essential-skills.md` for a tiered recommendation of what to install first.
+Install as you need them:
 
 ```bash
-# See what's available
+# 看有什么 skill
 openclaw skills list
 
-# Install the essentials (Tier 1)
-openclaw skills install weather
-openclaw skills install github
-openclaw skills install summarize
+# 去 ClawHub 找更多
+# https://clawhub.com
 ```
 
-Start with Tier 1 skills. Add Tier 2 based on your workflow. Don't install everything — each skill adds to context.
+Start with 1-2 skills. Weather, GitHub, whatever you use daily.
+从 1-2 个开始。天气、GitHub——你每天用的东西。
 
-**You're ready for Level 4 when:** Your agent proactively handles routine tasks and you trust it to act on its own for low-risk operations.
+**Ready for Level 4 when:** Agent handles routine tasks proactively and you trust it for low-risk operations.
+**进入 Level 4 的标志：** agent 主动处理日常任务，你信任它做低风险操作。
 
 ---
 
-## Level 4: Orchestrator
+## Level 4: Orchestrator / 指挥官
 
-**Goal:** Multiple agents working together, complex workflows.
+**Goal:** Multiple agents, complex workflows.
+**目标：** 多 agent 协作，复杂工作流。
 
-### Multi-Agent Setup
+### Multi-Agent / 多 Agent
 
-When one agent isn't enough. See `references/multi-agent.md` for the complete architecture guide (single gateway vs multi-gateway, with pros/cons and real examples).
+When one agent isn't enough:
+一个 agent 不够时：
 
-Two approaches:
-- **Single Gateway** — All agents in one config. Simple, shared resources. Best for personal use.
-- **Multiple Gateways** — Fully isolated instances. Best for different machines, different people, or production setups.
+- **Specialized agents** — coding / research / social media / health / language learning
+  专门化：写代码的、做研究的、管社交媒体的、健身教练、英语老师
+- **Manager + worker** — Main agent delegates to sub-agents
+  经理+执行：主 agent 分配任务给子 agent
+- **Different models** — Cheap models for simple tasks, powerful ones for complex work
+  不同模型：简单任务用便宜的，复杂任务用强的
 
-Common patterns:
-- **Specialized agents** — One for coding, one for research, one for social media
-- **Manager + worker pattern** — Main agent delegates to sub-agents
-- **Different models** — Use cheaper models for simple tasks, powerful ones for complex work
-
-### Workflow Automation
+### Workflow Automation / 工作流自动化
 
 Combine cron + skills + multi-channel:
 
 ```
-8:00 AM  → Agent reads schedule, sends Telegram summary
-9:00 AM  → Agent checks GitHub PRs, posts updates to Discord
-12:00 PM → Agent checks email, flags urgent items
-6:00 PM  → Agent generates daily summary
+8:00 AM  → Agent 读日程，发 Telegram 提醒
+9:00 AM  → Agent 检查 GitHub PR，发 Discord 更新
+12:00 PM → Agent 检查邮件，标记紧急的
+6:00 PM  → Agent 生成每日总结
 ```
 
-### Advanced Skills
+### Advanced Skills / 进阶技能
 
-At this level, consider:
-- Custom skills for your specific workflows
-- Browser automation for web tasks
-- API integrations via MCP servers
+At this level, explore [ClawHub](https://clawhub.com) for:
+在这个级别，去 ClawHub 找：
+
+- Custom skills for your specific workflows / 适合你工作流的自定义 skill
+- Browser automation for web tasks / 浏览器自动化
+- API integrations via MCP servers / MCP 服务器集成
+- Community skills from other users / 其他用户分享的 skill
 
 ---
 
-## Tool Path Principles
+## Tool Path Principles / 工具之路原则
 
-1. **Automate gradually** — Don't automate everything at once. Start with one recurring pain point.
-2. **Trust but verify** — Let the agent do things, but review the results initially.
-3. **Fail safely** — Configure safety rules so mistakes are recoverable (trash > rm).
-4. **Batch similar tasks** — Group related checks into one heartbeat instead of many cron jobs.
-5. **Measure value** — If an automation saves you less time than it takes to maintain, remove it.
+1. **Automate gradually** — Start with one pain point. / 一次自动化一个痛点
+2. **Trust but verify** — Let it do things, but review initially. / 让它做，但一开始要检查
+3. **Fail safely** — `trash` > `rm`. Recoverable beats gone. / 可恢复比消失好
+4. **Batch similar tasks** — Group checks into one heartbeat. / 类似检查合并到一个心跳
+5. **Measure value** — If automation costs more time than it saves, remove it. / 如果维护成本大于省下的时间，删掉它
