@@ -86,16 +86,50 @@ Each level requires trust — from both sides.
 
 ## 🎭 MBTI SOUL Templates / MBTI 人格模板
 
-Can't figure out what to write in SOUL.md? Pick an MBTI type.
-不知道 SOUL.md 写什么？选一个 MBTI 类型。
+Don't know what to write in SOUL.md? Take a quick personality quiz.
+不知道 SOUL.md 写什么？做个小测试，4 个问题帮你找到合适的 agent 性格。
 
-Read `references/mbti-souls/README.md` for the full list and usage guide. 16 types available — each is a ready-to-use SOUL.md template that the user can customize.
+### Personality Quiz Flow / 性格测试流程
 
-When a user wants to set up their agent's personality:
-1. Show them the 16 types (from README.md quick reference table)
-2. They pick one → read `references/mbti-souls/{TYPE}.md`
-3. Copy it as their SOUL.md, fill in `[你的名字]`
-4. Remind them: iterate after a few days
+Ask these 4 questions **one at a time**. Each question determines one MBTI dimension.
+
+**Q1 — E/I（能量来源）**
+> 你希望你的 agent 是什么风格？
+> A) 主动找你聊，活跃有存在感
+> B) 安静等你开口，需要才出现
+
+A → E, B → I
+
+**Q2 — S/N（信息处理）**
+> 你更需要 agent 帮你做什么？
+> A) 处理具体的事：日程、提醒、执行任务
+> B) 探索可能性：头脑风暴、分析、提供新角度
+
+A → S, B → N
+
+**Q3 — T/F（决策方式）**
+> 当你犯了错或遇到麻烦，你希望 agent 怎么回应？
+> A) 直接指出问题，给方案
+> B) 先关心你的感受，再谈怎么解决
+
+A → T, B → F
+
+**Q4 — J/P（生活方式）**
+> 你希望 agent 怎么帮你管理时间？
+> A) 帮我做计划、追进度、提醒 deadline
+> B) 灵活一点，不用太多规矩，随机应变
+
+A → J, B → P
+
+### After the Quiz / 测试完成后
+
+Combine the 4 letters → read `references/mbti-souls/{TYPE}.md` → copy as user's SOUL.md.
+
+Example: B + B + A + A → INTJ → read `references/mbti-souls/INTJ.md`
+
+Tell the user: "根据你的回答，推荐 **{TYPE} ({昵称})** 人格。我帮你生成了 SOUL.md，你可以看看改改。用几天后再调整——第一版永远是草稿。"
+
+16 types available in `references/mbti-souls/`. See `references/mbti-souls/README.md` for the full reference table.
 
 ---
 
