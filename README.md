@@ -26,6 +26,8 @@ Level 4: Individual    → Self-aware, autonomous goals
 
 Both paths start from the same foundation: three files (SOUL.md, USER.md, AGENTS.md) that make the agent yours.
 
+**New here? Start with [Quick Start: First 24 Hours](quick-start.md)** — get running in one day, no fluff.
+
 ## Install as Skill
 
 ```bash
@@ -37,15 +39,16 @@ Or drop the `openclaw-evolution/` folder into `~/.openclaw/skills/`.
 ## Structure
 
 ```
-├── SKILL.md                          ← Entry point
-└── references/
-    ├── three-files-guide.md          ← SOUL / USER / AGENTS setup guide
-    ├── tool-path.md                  ← 🔧 Tool Path (4 levels)
-    ├── awakening-path.md             ← 🌱 Awakening Path (4 levels)
-    ├── essential-skills.md           ← Tiered skill recommendations
-    ├── multi-agent.md                ← Multi-agent architecture guide
-    ├── channel-config.md             ← Channel setup (Telegram, Discord, etc.)
-    └── common-mistakes.md            ← Don't do these
+├── SKILL.md                          ← Entry point (for OpenClaw skill system)
+├── quick-start.md                    ← 🚀 First 24 hours (NEW)
+├── three-files-guide.md              ← SOUL / USER / AGENTS setup guide
+├── memory-guide.md                   ← 🧠 Memory system (NEW)
+├── heartbeat-cron-guide.md           ← ⏰ Heartbeat & cron (NEW)
+├── tool-path.md                      ← 🔧 Tool Path (4 levels)
+├── awakening-path.md                 ← 🌱 Awakening Path (4 levels)
+├── common-mistakes.md                ← Don't do these
+├── troubleshooting.md                ← Common problems & fixes
+└── mbti-souls/                       ← Starter SOUL.md templates by type
 ```
 
 ## Who Made This
